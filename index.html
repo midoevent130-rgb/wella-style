@@ -65,7 +65,6 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 </style>
 </head>
 <body>
-
 <header>
 <div class="top">
 <div class="logo">Wella Style<small>WOMEN'S HOMEWEAR & LIFESTYLE</small></div>
@@ -78,7 +77,6 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 </nav>
 </div>
 </header>
-
 <section class="hero">
 <div>
 <h1>Wella Style</h1>
@@ -87,7 +85,6 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 </div>
 <div class="hero-art">🎀👗</div>
 </section>
-
 <main class="wrap">
 <h2 class="section-title">تسوقي حسب القسم</h2>
 <div class="categories">
@@ -95,10 +92,8 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 <button onclick="filter('women',this)">ملابس حريمي</button>
 <button onclick="filter('home',this)">ملابس بيت وبيجامات</button>
 </div>
-
 <h2 class="section-title" id="products">منتجات Wella Style</h2>
 <div class="grid" id="grid"></div>
-
 <section class="admin">
 <div class="admin-head">
 <div>
@@ -137,20 +132,19 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 <p id="saveMessage" class="muted" role="status"></p>
 </form>
 <h3>إدارة المنتجات الحالية</h3><div id="manageList"></div>
-<hr style="border:0;border-top:1px solid #ead5ce;margin:24px 0">
-<div class="admin-head"><h3>طلبات العملاء</h3><button type="button" class="secondary" onclick="loadManagerOrders()">تحديث الطلبات</button></div>
+<hr>
+<h3>طلبات العملاء</h3>
+<div class="actions"><button type="button" onclick="loadManagerOrders()">تحديث الطلبات</button></div>
 <div id="ordersList" class="muted">جارٍ تحميل الطلبات...</div>
 </div>
 </div>
 </section>
-
 <div class="benefits">
 <div class="benefit">🚚<br><b>توصيل للمحافظات</b><br><span class="muted">تفاصيل الشحن تؤكد عند الطلب</span></div>
 <div class="benefit">💵<br><b>طرق الدفع</b><br><span class="muted">الدفع عند الاستلام أو اتصالات كاش</span></div>
 <div class="benefit">💬<br><b>خدمة العملاء</b><br><span class="muted">01040990102</span><br><a href="https://wa.me/201040990102">تواصلي معنا</a></div>
 </div>
 </main>
-
 <footer>
 <div class="logo">Wella Style</div>
 <p>أناقتك في كل تفاصيل بيتك</p>
@@ -158,48 +152,44 @@ footer{background:#f7e3e8;padding:28px 5%;text-align:center;color:#69444f}
 <p class="muted">© 2026 Wella Style — جميع الحقوق محفوظة</p>
 </footer>
 
-<!-- سلة المشتريات -->
 <div class="overlay" id="cartOverlay" onclick="overlayClose(event,'cartOverlay')">
-  <div class="panel">
-    <button class="close" onclick="closeCart()">إغلاق</button>
-    <h2>سلة مشترياتك</h2>
-    <div id="cartItems"></div>
-    <div class="total-line"><span>الإجمالي</span><span id="cartTotal">0 ج.م</span></div>
-    <button style="width:100%" onclick="openCheckout()">إتمام الطلب</button>
-  </div>
+<div class="panel">
+<button class="close" onclick="closeCart()">إغلاق</button>
+<h2>سلة مشترياتك</h2>
+<div id="cartItems"></div>
+<div class="total-line"><span>الإجمالي</span><span id="cartTotal">0 ج.م</span></div>
+<button style="width:100%" onclick="openCheckout()">إتمام الطلب</button>
 </div>
-
-<!-- إتمام الطلب -->
+</div>
 <div class="overlay" id="checkoutOverlay" onclick="overlayClose(event,'checkoutOverlay')">
-  <div class="panel">
-    <button class="close" onclick="closeCheckout()">إغلاق</button>
-    <h2>إتمام الطلب</h2>
-    <form id="checkoutForm">
-      <label>الاسم بالكامل</label>
-      <input class="field" id="customerName" required maxlength="120" placeholder="اسم العميل">
-      <label>رقم الهاتف</label>
-      <input class="field" id="customerPhone" type="tel" required maxlength="30" placeholder="01xxxxxxxxx">
-      <label>العنوان بالتفصيل والمحافظة</label>
-      <textarea class="field" id="customerAddress" rows="3" required maxlength="500" placeholder="المحافظة، المنطقة، الشارع، رقم العقار"></textarea>
-      <label>طريقة الدفع</label>
-      <select class="field" id="paymentMethod" required>
-        <option value="cod">الدفع عند الاستلام</option>
-        <option value="wallet">اتصالات كاش</option>
-      </select>
-      <div id="walletInstructions" class="wallet-note" hidden>
-        <b>الدفع عن طريق اتصالات كاش</b><br>
-        حوّلي إجمالي الطلب إلى رقم المحفظة التالي:<br>
-        <strong style="font-size:21px">01150621889</strong><br>
-        بعد التحويل اضغطي تأكيد الطلب، وسنفتح واتساب خدمة العملاء لإرسال صورة إثبات التحويل يدويًا.
-        <br><span class="muted">لن يتم اعتبار الطلب مدفوعًا إلا بعد مراجعة التحويل والتأكد من وصول المبلغ.</span>
-      </div>
-      <div class="total-line"><span>إجمالي الطلب</span><span id="checkoutTotal">0 ج.م</span></div>
-      <button id="submitOrderBtn" type="submit" style="width:100%">تأكيد الطلب</button>
-      <p id="checkoutMessage" class="muted" role="status"></p>
-    </form>
-  </div>
+<div class="panel">
+<button class="close" onclick="closeCheckout()">إغلاق</button>
+<h2>إتمام الطلب</h2>
+<form id="checkoutForm">
+<label>الاسم بالكامل</label>
+<input class="field" id="customerName" required maxlength="120" placeholder="اسم العميل">
+<label>رقم الهاتف</label>
+<input class="field" id="customerPhone" type="tel" required maxlength="30" placeholder="01xxxxxxxxx">
+<label>العنوان بالتفصيل والمحافظة</label>
+<textarea class="field" id="customerAddress" rows="3" required maxlength="500" placeholder="المحافظة، المنطقة، الشارع، رقم العقار"></textarea>
+<label>طريقة الدفع</label>
+<select class="field" id="paymentMethod" required>
+<option value="cod">الدفع عند الاستلام</option>
+<option value="wallet">اتصالات كاش</option>
+</select>
+<div id="walletInstructions" class="wallet-note" hidden>
+<b>الدفع عن طريق اتصالات كاش</b><br>
+حوّلي إجمالي الطلب إلى رقم المحفظة التالي:<br>
+<strong style="font-size:21px">01150621889</strong><br>
+بعد التحويل اضغطي تأكيد الطلب، وسنفتح واتساب خدمة العملاء لإرسال صورة إثبات التحويل يدويًا.
+<br><span class="muted">لن يتم اعتبار الطلب مدفوعًا إلا بعد مراجعة التحويل والتأكد من وصول المبلغ.</span>
 </div>
-
+<div class="total-line"><span>إجمالي الطلب</span><span id="checkoutTotal">0 ج.م</span></div>
+<button id="submitOrderBtn" type="submit" style="width:100%">تأكيد الطلب</button>
+<p id="checkoutMessage" class="muted" role="status"></p>
+</form>
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://dtswdzfpjksghjlhlwvu.supabase.co";
@@ -211,9 +201,9 @@ const CUSTOMER_SERVICE_WA = "201040990102";
 const ORDERS_WA = "201099465046";
 
 const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY,
-  {auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}}
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY,
+{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}}
 );
 
 let products = [];
@@ -225,230 +215,265 @@ const esc = value => String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":
 
 function imageUrl(p){return p.image_path||""}
 function mapProduct(row){
-  return {
-    id:row.id,name:row.name,code:row.code||"",cat:row.category||"home",
-    size:typeof row.sizes_colors==="string"?row.sizes_colors:(row.sizes_colors?JSON.stringify(row.sizes_colors):""),
-    detail:row.detail||"",image:imageUrl(row),price:Number(row.price||0),is_active:row.is_active!==false
-  };
+return {
+id:row.id,name:row.name,code:row.code||"",cat:row.category||"home",
+size:typeof row.sizes_colors==="string"?row.sizes_colors:(row.sizes_colors?JSON.stringify(row.sizes_colors):""),
+detail:row.detail||"",image:imageUrl(row),price:Number(row.price||0),is_active:row.is_active!==false
+};
 }
 async function loadProducts(){
-  const {data,error}=await supabaseClient.from("products").select("*").eq("is_active",true).order("created_at",{ascending:false});
-  if(error){document.getElementById("grid").innerHTML='<p class="muted">تعذر تحميل المنتجات حاليًا. تأكدي من إعداد جدول products وسياسة عرض المنتجات العامة.</p>';console.error(error);return}
-  products=(data||[]).map(mapProduct);render();
+const {data,error}=await supabaseClient.from("products").select("*").eq("is_active",true).order("created_at",{ascending:false});
+if(error){document.getElementById("grid").innerHTML='<p class="muted">تعذر تحميل المنتجات حاليًا. تأكدي من إعداد جدول products وسياسة عرض المنتجات العامة.</p>';console.error(error);return}
+products=(data||[]).map(mapProduct);render();
 }
 function render(list=products){
-  const grid=document.getElementById("grid");
-  if(!list.length){grid.innerHTML='<p class="muted">لا توجد منتجات منشورة حاليًا.</p>';return}
-  grid.innerHTML=list.map(p=>`
-    <article class="product">
-      <img class="photo" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">
-      <div class="info">
-        <h3>${esc(p.name)}</h3><div class="code">كود المنتج: ${esc(p.code||"—")}</div>
-        <p class="muted">${esc(p.detail||"")}<br>المقاسات والألوان: ${esc(p.size||"يرجى الاستفسار")}</p>
-        <div class="price">${money(p.price)}</div>
-        <button onclick="addToCart('${String(p.id)}')">أضيفي إلى السلة</button>
-        <button class="secondary" onclick="ask('${String(p.id)}')">استفسار عبر واتساب</button>
-      </div>
-    </article>`).join("");
+const grid=document.getElementById("grid");
+if(!list.length){grid.innerHTML='<p class="muted">لا توجد منتجات منشورة حاليًا.</p>';return}
+grid.innerHTML=list.map(p=>`
+<article class="product">
+<img class="photo" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">
+<div class="info">
+<h3>${esc(p.name)}</h3><div class="code">كود المنتج: ${esc(p.code||"—")}</div>
+<p class="muted">${esc(p.detail||"")}<br>المقاسات والألوان: ${esc(p.size||"يرجى الاستفسار")}</p>
+<div class="price">${money(p.price)}</div>
+<button onclick="addToCart('${String(p.id)}')">أضيفي إلى السلة</button>
+<button class="secondary" onclick="ask('${String(p.id)}')">استفسار عبر واتساب</button>
+</div>
+</article>`).join("");
 }
 function filter(cat,btn){
-  render(cat==="all"?products:products.filter(p=>p.cat===cat));
-  document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
-  if(btn)btn.classList.add("active");
+render(cat==="all"?products:products.filter(p=>p.cat===cat));
+document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+if(btn)btn.classList.add("active");
 }
 function ask(id){
-  const p=products.find(x=>String(x.id)===String(id));if(!p)return;
-  const msg=`مرحباً Wella Style، أريد الاستفسار عن المنتج: ${p.name}، كود ${p.code||"—"}، السعر ${money(p.price)}، المقاسات/الألوان ${p.size||"غير محدد"}.`;
-  window.open("https://wa.me/"+ORDERS_WA+"?text="+encodeURIComponent(msg),"_blank");
+const p=products.find(x=>String(x.id)===String(id));if(!p)return;
+const msg=`مرحباً Wella Style، أريد الاستفسار عن المنتج: ${p.name}، كود ${p.code||"—"}، السعر ${money(p.price)}، المقاسات/الألوان ${p.size||"غير محدد"}.`;
+window.open("https://wa.me/"+ORDERS_WA+"?text="+encodeURIComponent(msg),"_blank");
 }
 function addToCart(id){
-  const p=products.find(x=>String(x.id)===String(id));if(!p)return;
-  if(!(p.price>0)){alert("هذا المنتج ليس له سعر محدد. يرجى الاستفسار عبر واتساب.");return}
-  const found=cart.find(x=>String(x.id)===String(id));
-  if(found)found.quantity++;else cart.push({id:p.id,name:p.name,code:p.code,price:p.price,quantity:1});
-  updateCartCount();alert("تمت إضافة المنتج إلى السلة.");
+const p=products.find(x=>String(x.id)===String(id));if(!p)return;
+if(!(p.price>0)){alert("هذا المنتج ليس له سعر محدد. يرجى الاستفسار عبر واتساب.");return}
+const found=cart.find(x=>String(x.id)===String(id));
+if(found)found.quantity++;else cart.push({id:p.id,name:p.name,code:p.code,price:p.price,quantity:1});
+updateCartCount();alert("تمت إضافة المنتج إلى السلة.");
 }
 function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.quantity,0)}
 function cartSum(){return cart.reduce((s,x)=>s+x.price*x.quantity,0)}
 function openCart(){renderCart();document.getElementById("cartOverlay").style.display="flex"}
 function closeCart(){document.getElementById("cartOverlay").style.display="none"}
 function renderCart(){
-  const el=document.getElementById("cartItems");
-  if(!cart.length){el.innerHTML='<p class="muted">السلة فارغة. أضيفي المنتجات أولًا.</p>'}
-  else{el.innerHTML=cart.map((x,i)=>`
-    <div class="cart-line">
-      <div><b>${esc(x.name)}</b><div class="muted">${money(x.price)} للقطعة</div></div>
-      <div class="qty">
-        <button class="secondary" onclick="changeQty(${i},-1)">−</button>
-        <b>${x.quantity}</b>
-        <button class="secondary" onclick="changeQty(${i},1)">+</button>
-        <button class="danger" onclick="removeCartItem(${i})">حذف</button>
-      </div>
-    </div>`).join("")}
-  document.getElementById("cartTotal").textContent=money(cartSum());
+const el=document.getElementById("cartItems");
+if(!cart.length){el.innerHTML='<p class="muted">السلة فارغة. أضيفي المنتجات أولًا.</p>'}
+else{el.innerHTML=cart.map((x,i)=>`
+<div class="cart-line">
+<div><b>${esc(x.name)}</b><div class="muted">${money(x.price)} للقطعة</div></div>
+<div class="qty">
+<button class="secondary" onclick="changeQty(${i},-1)">−</button>
+<b>${x.quantity}</b>
+<button class="secondary" onclick="changeQty(${i},1)">+</button>
+<button class="danger" onclick="removeCartItem(${i})">حذف</button>
+</div>
+</div>`).join("")}
+document.getElementById("cartTotal").textContent=money(cartSum());
 }
 function changeQty(i,delta){if(!cart[i])return;cart[i].quantity+=delta;if(cart[i].quantity<=0)cart.splice(i,1);updateCartCount();renderCart()}
 function removeCartItem(i){cart.splice(i,1);updateCartCount();renderCart()}
 function openCheckout(){
-  if(!cart.length){alert("السلة فارغة.");return}
-  closeCart();
-  document.getElementById("checkoutTotal").textContent=money(cartSum());
-  document.getElementById("checkoutMessage").textContent="";
-  document.getElementById("checkoutOverlay").style.display="flex";
-  updateWalletInstructions();
+if(!cart.length){alert("السلة فارغة.");return}
+closeCart();
+document.getElementById("checkoutTotal").textContent=money(cartSum());
+document.getElementById("checkoutMessage").textContent="";
+document.getElementById("checkoutOverlay").style.display="flex";
+updateWalletInstructions();
 }
 function closeCheckout(){document.getElementById("checkoutOverlay").style.display="none"}
 function updateWalletInstructions(){
-  const isWallet=document.getElementById("paymentMethod").value==="wallet";
-  document.getElementById("walletInstructions").hidden=!isWallet;
-  document.getElementById("submitOrderBtn").textContent=isWallet?"تأكيد الطلب والانتقال إلى واتساب":"تأكيد الطلب";
+const isWallet=document.getElementById("paymentMethod").value==="wallet";
+document.getElementById("walletInstructions").hidden=!isWallet;
+document.getElementById("submitOrderBtn").textContent=isWallet?"تأكيد الطلب والانتقال إلى واتساب":"تأكيد الطلب";
 }
 document.getElementById("paymentMethod").addEventListener("change",updateWalletInstructions);
 function overlayClose(event,id){if(event.target.id===id)document.getElementById(id).style.display="none"}
 
 document.getElementById("checkoutForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-  if(!cart.length){alert("السلة فارغة.");return}
-  const btn=document.getElementById("submitOrderBtn"),msg=document.getElementById("checkoutMessage");
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const address=document.getElementById("customerAddress").value.trim();
-  const method=document.getElementById("paymentMethod").value;
-  const total=cartSum();
-  const items=cart.map(x=>({id:x.id,name:x.name,code:x.code,price:x.price,quantity:x.quantity}));
-  btn.disabled=true;msg.textContent="جارٍ تسجيل طلبك...";
-  const orderRow={
-    customer_name:name,phone,address,payment_method:method,
-    items,total,status:method==="cod"?"new":"awaiting_payment",
-    payment_reference:null,payment_proof_url:null,
-    payment_status:method==="cod"?"cash_on_delivery":"awaiting_wallet_transfer"
-  };
-  try{
-    const {error}=await supabaseClient.from("orders").insert(orderRow);
-    if(error)throw error;
-    const orderId="تم تسجيله في المتجر";
-    const orderLines=items.map(x=>`- ${x.name} × ${x.quantity} = ${money(x.price*x.quantity)}`).join("\n");
-    let waMessage;
-    if(method==="wallet"){
-      waMessage=`مرحباً Wella Style، تم تسجيل طلب رقم ${orderId}.\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\nالمنتجات:\n${orderLines}\nالإجمالي: ${money(total)}\nطريقة الدفع: اتصالات كاش إلى ${WALLET_NUMBER}.\nسأرفق صورة إثبات التحويل في هذه المحادثة.`;
-      alert("تم تسجيل طلبك. حوّلي المبلغ إلى رقم اتصالات كاش الموضح، ثم أرفقي صورة إثبات التحويل في واتساب.");
-      window.open("https://wa.me/"+CUSTOMER_SERVICE_WA+"?text="+encodeURIComponent(waMessage),"_blank");
-    }else{
-      waMessage=`مرحباً Wella Style، تم تسجيل طلب جديد رقم ${orderId}.\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\nالمنتجات:\n${orderLines}\nالإجمالي: ${money(total)}\nطريقة الدفع: عند الاستلام.`;
-      alert("تم تسجيل طلبك بنجاح. سنتواصل معك لتأكيد تفاصيل التوصيل.");
-      window.open("https://wa.me/"+ORDERS_WA+"?text="+encodeURIComponent(waMessage),"_blank");
-    }
-    cart=[];updateCartCount();document.getElementById("checkoutForm").reset();updateWalletInstructions();closeCheckout();
-  }catch(error){
-    console.error(error);
-    msg.textContent="لم يتم تسجيل الطلب: "+(error.message||"حدث خطأ غير معروف")+". إذا استمرت المشكلة فقد تحتاج سياسة INSERT لجدول orders.";
-  }finally{btn.disabled=false}
+e.preventDefault();
+if(!cart.length){alert("السلة فارغة.");return}
+const btn=document.getElementById("submitOrderBtn"),msg=document.getElementById("checkoutMessage");
+const name=document.getElementById("customerName").value.trim();
+const phone=document.getElementById("customerPhone").value.trim();
+const address=document.getElementById("customerAddress").value.trim();
+const method=document.getElementById("paymentMethod").value;
+const total=cartSum();
+const items=cart.map(x=>({id:x.id,name:x.name,code:x.code,price:x.price,quantity:x.quantity}));
+btn.disabled=true;msg.textContent="جارٍ تسجيل طلبك...";
+const orderRow={
+customer_name:name,phone,address,payment_method:method,
+items,total,status:method==="cod"?"new":"awaiting_payment",
+payment_reference:null,payment_proof_url:null,
+payment_status:method==="cod"?"cash_on_delivery":"awaiting_wallet_transfer"
+};
+try{
+const {error}=await supabaseClient.from("orders").insert(orderRow);
+if(error)throw error;
+const orderId="تم تسجيله في المتجر";
+const orderLines=items.map(x=>`- ${x.name} × ${x.quantity} = ${money(x.price*x.quantity)}`).join("\n");
+let waMessage;
+if(method==="wallet"){
+waMessage=`مرحباً Wella Style، تم تسجيل طلب رقم ${orderId}.\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\nالمنتجات:\n${orderLines}\nالإجمالي: ${money(total)}\nطريقة الدفع: اتصالات كاش إلى ${WALLET_NUMBER}.\nسأرفق صورة إثبات التحويل في هذه المحادثة.`;
+alert("تم تسجيل طلبك. حوّلي المبلغ إلى رقم اتصالات كاش الموضح، ثم أرفقي صورة إثبات التحويل في واتساب.");
+window.open("https://wa.me/"+CUSTOMER_SERVICE_WA+"?text="+encodeURIComponent(waMessage),"_blank");
+}else{
+waMessage=`مرحباً Wella Style، تم تسجيل طلب جديد رقم ${orderId}.\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\nالمنتجات:\n${orderLines}\nالإجمالي: ${money(total)}\nطريقة الدفع: عند الاستلام.`;
+alert("تم تسجيل طلبك بنجاح. سنتواصل معك لتأكيد تفاصيل التوصيل.");
+window.open("https://wa.me/"+ORDERS_WA+"?text="+encodeURIComponent(waMessage),"_blank");
+}
+cart=[];updateCartCount();document.getElementById("checkoutForm").reset();updateWalletInstructions();closeCheckout();
+}catch(error){
+console.error(error);
+msg.textContent="لم يتم تسجيل الطلب: "+(error.message||"حدث خطأ غير معروف")+". إذا استمرت المشكلة فقد تحتاج سياسة INSERT لجدول orders.";
+}finally{btn.disabled=false}
 });
 
 /* إدارة المنتجات */
 function toggleAdmin(){const el=document.getElementById("adminPanel");el.hidden=!el.hidden;if(!el.hidden)checkExistingSession()}
 function setLoginMessage(message,isError=false){const el=document.getElementById("loginMessage");el.textContent=message;el.style.color=isError?"#a12642":"#876d75"}
 async function checkExistingSession(){
-  const {data:{session}}=await supabaseClient.auth.getSession();
-  if(session?.user?.id===MANAGER_UID)showManager();else{if(session)await supabaseClient.auth.signOut();showLogin()}
+const {data:{session}}=await supabaseClient.auth.getSession();
+if(session?.user?.id===MANAGER_UID)showManager();else{if(session)await supabaseClient.auth.signOut();showLogin()}
 }
 function showLogin(){currentManager=false;document.getElementById("loginBox").hidden=false;document.getElementById("managerBox").hidden=true}
 async function showManager(){currentManager=true;document.getElementById("loginBox").hidden=true;document.getElementById("managerBox").hidden=false;await loadManagerProducts();await loadManagerOrders()}
 async function adminLogin(){
-  const email=document.getElementById("adminEmail").value.trim(),password=document.getElementById("adminPassword").value;
-  if(!email||!password){setLoginMessage("اكتبي البريد الإلكتروني وكلمة المرور.",true);return}
-  setLoginMessage("جارٍ التحقق من الحساب...");
-  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
-  document.getElementById("adminPassword").value="";
-  if(error){setLoginMessage("تعذر تسجيل الدخول: راجعي البريد وكلمة المرور.",true);console.error(error);return}
-  if(data.user?.id!==MANAGER_UID){await supabaseClient.auth.signOut();setLoginMessage("هذا الحساب ليس حساب المدير المصرح له.",true);return}
-  await showManager();
+const email=document.getElementById("adminEmail").value.trim(),password=document.getElementById("adminPassword").value;
+if(!email||!password){setLoginMessage("اكتبي البريد الإلكتروني وكلمة المرور.",true);return}
+setLoginMessage("جارٍ التحقق من الحساب...");
+const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+document.getElementById("adminPassword").value="";
+if(error){setLoginMessage("تعذر تسجيل الدخول: راجعي البريد وكلمة المرور.",true);console.error(error);return}
+if(data.user?.id!==MANAGER_UID){await supabaseClient.auth.signOut();setLoginMessage("هذا الحساب ليس حساب المدير المصرح له.",true);return}
+await showManager();
 }
 async function adminLogout(){await supabaseClient.auth.signOut();showLogin();setLoginMessage("تم تسجيل الخروج.")}
 async function loadManagerProducts(){
-  const {data,error}=await supabaseClient.from("products").select("*").order("created_at",{ascending:false});
-  if(error){document.getElementById("manageList").textContent="تعذر تحميل المنتجات: "+error.message;return}
-  products=(data||[]).map(mapProduct);render();manageProducts();
+const {data,error}=await supabaseClient.from("products").select("*").order("created_at",{ascending:false});
+if(error){document.getElementById("manageList").textContent="تعذر تحميل المنتجات: "+error.message;return}
+products=(data||[]).map(mapProduct);render();manageProducts();
 }
 async function loadManagerOrders(){
-  const el=document.getElementById("ordersList");
-  if(!currentManager){el.textContent="سجلي الدخول بحساب المدير لعرض الطلبات.";return}
-  el.textContent="جارٍ تحميل الطلبات...";
-  const {data:{session},error:sessionError}=await supabaseClient.auth.getSession();
-  if(sessionError||session?.user?.id!==MANAGER_UID){currentManager=false;el.textContent="انتهت جلسة المدير. سجلي الدخول مرة أخرى.";showLogin();return}
-  const {data,error}=await supabaseClient.from("orders").select("id,customer_name,phone,address,payment_method,items,total,status,payment_status,created_at").order("created_at",{ascending:false});
-  if(error){el.textContent="تعذر تحميل الطلبات: "+error.message;return}
-  if(!data||!data.length){el.textContent="لا توجد طلبات حتى الآن.";return}
-  const paymentName=v=>v==="cod"?"الدفع عند الاستلام":v==="wallet"?"اتصالات كاش":(v||"غير محدد");
-  const statusName=v=>({new:"طلب جديد",awaiting_payment:"في انتظار التحويل",confirmed:"مؤكد",completed:"مكتمل",cancelled:"ملغي"}[v]||v||"غير محدد");
-  const paymentStatusName=v=>({cash_on_delivery:"الدفع عند الاستلام",awaiting_wallet_transfer:"في انتظار التحويل",paid:"تم الدفع",pending:"قيد المراجعة"}[v]||v||"غير محدد");
-  el.innerHTML=data.map(o=>{
-    let items=o.items;
-    if(typeof items==="string"){try{items=JSON.parse(items)}catch(_){items=[]}}
-    const itemText=Array.isArray(items)&&items.length?items.map(x=>`${esc(x.name||"منتج")} × ${Number(x.quantity||1)} — ${money(Number(x.price||0)*Number(x.quantity||1))}`).join("<br>"):"تفاصيل المنتجات غير متاحة";
-    const date=o.created_at?new Date(o.created_at).toLocaleString("ar-EG"):"غير محدد";
-    return `<article class="product" style="padding:14px;margin:12px 0">
-      <div class="admin-head"><b>طلب رقم: ${esc(o.id)}</b><span class="muted">${esc(date)}</span></div>
-      <p><b>العميل:</b> ${esc(o.customer_name)}<br><b>الهاتف:</b> <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a><br><b>العنوان:</b> ${esc(o.address)}</p>
-      <p><b>المنتجات:</b><br>${itemText}</p>
-      <p><b>الإجمالي:</b> <span class="price">${money(o.total)}</span><br><b>طريقة الدفع:</b> ${esc(paymentName(o.payment_method))}<br><b>حالة الطلب:</b> ${esc(statusName(o.status))}<br><b>حالة الدفع:</b> ${esc(paymentStatusName(o.payment_status))}</p>
-    </article>`;
-  }).join("");
+const el=document.getElementById("ordersList");
+if(!currentManager){el.textContent="يجب تسجيل الدخول بحساب المدير لعرض الطلبات.";return}
+const {data:{session}}=await supabaseClient.auth.getSession();
+if(session?.user?.id!==MANAGER_UID){currentManager=false;el.textContent="غير مصرح بعرض الطلبات.";return}
+el.textContent="جارٍ تحميل الطلبات...";
+const {data,error}=await supabaseClient.from("orders").select("id,customer_name,phone,address,payment_method,items,total,status,payment_status,created_at").order("created_at",{ascending:false});
+if(error){el.textContent="تعذر تحميل الطلبات: "+error.message;return}
+if(!data||!data.length){el.textContent="لا توجد طلبات حتى الآن.";return}
+const paymentLabel=v=>v==="cod"?"الدفع عند الاستلام":v==="wallet"?"اتصالات كاش":esc(v||"غير محدد");
+el.innerHTML=data.map(o=>{
+let items=[];
+try{items=Array.isArray(o.items)?o.items:JSON.parse(o.items||"[]")}catch(_){items=[]}
+const lines=items.map(x=>`<li>${esc(x.name||"منتج")} × ${esc(x.quantity||1)} — ${money(Number(x.price||0)*Number(x.quantity||1))}</li>`).join("");
+const date=o.created_at?new Date(o.created_at).toLocaleString("ar-EG"):"غير محدد";
+return `<article class="product" style="padding:14px;margin:12px 0">
+<b>طلب بتاريخ: ${esc(date)}</b>
+<p><b>العميل:</b> ${esc(o.customer_name)}<br><b>الهاتف:</b> ${esc(o.phone)}<br><b>العنوان:</b> ${esc(o.address)}</p>
+<b>المنتجات:</b><ul>${lines||"<li>تفاصيل المنتجات غير متاحة</li>"}</ul>
+<p><b>الإجمالي:</b> <span class="price">${money(o.total)}</span><br>
+<b>طريقة الدفع:</b> ${paymentLabel(o.payment_method)}<br>
+<b>حالة الطلب:</b> ${esc(orderStatusLabel(o.status))}<br>
+<b>حالة الدفع:</b> ${esc(o.payment_status||"غير محددة")}</p>
+<div class="actions">
+<label for="order-status-${esc(o.id)}">تغيير حالة الطلب</label>
+<select class="field" id="order-status-${esc(o.id)}" style="max-width:240px;margin:0">
+${orderStatusOptions(o.status)}
+</select>
+<button type="button" onclick="updateOrderStatus('${esc(o.id)}')">حفظ الحالة</button>
+</div>
+<p id="order-status-message-${esc(o.id)}" class="muted" role="status"></p>
+</article>`;
+}).join("");
 }
-
+function orderStatusLabel(status){
+const labels={awaiting_payment:"بانتظار الدفع",new:"جديد",processing:"قيد التجهيز",shipped:"تم الشحن",delivered:"تم التسليم",cancelled:"ملغي"};
+return labels[status]||status||"جديد";
+}
+function orderStatusOptions(current){
+const options=[
+["awaiting_payment","بانتظار الدفع"],
+["new","جديد"],
+["processing","قيد التجهيز"],
+["shipped","تم الشحن"],
+["delivered","تم التسليم"],
+["cancelled","ملغي"]
+];
+return options.map(([value,label])=>`<option value="${value}" ${String(current||"new")===value?"selected":""}>${label}</option>`).join("");
+}
+async function updateOrderStatus(orderId){
+const select=document.getElementById("order-status-"+orderId);
+const message=document.getElementById("order-status-message-"+orderId);
+if(!currentManager||!select||!message){alert("سجلي الدخول بحساب المدير أولًا.");return}
+const {data:{session},error:sessionError}=await supabaseClient.auth.getSession();
+if(sessionError||session?.user?.id!==MANAGER_UID){currentManager=false;message.textContent="غير مصرح بتعديل حالة الطلب. سجلي الدخول بحساب المدير.";return}
+const newStatus=select.value;
+message.textContent="جارٍ حفظ الحالة...";
+const {error}=await supabaseClient.from("orders").update({status:newStatus}).eq("id",orderId);
+if(error){message.textContent="تعذر حفظ الحالة: "+error.message;console.error(error);return}
+message.textContent="تم حفظ حالة الطلب: "+orderStatusLabel(newStatus);
+}
 function resetForm(){document.getElementById("productForm").reset();document.getElementById("editId").value="";document.getElementById("saveMessage").textContent=""}
 function manageProducts(){
-  const el=document.getElementById("manageList");
-  el.innerHTML=products.map(p=>`
-    <div class="manage-row"><span><b>${esc(p.name)}</b> — ${money(p.price)} ${p.is_active?"":"(مخفي)"}</span>
-    <span><button class="secondary" onclick="editProduct('${String(p.id)}')">تعديل</button>
-    <button class="danger" onclick="deleteProduct('${String(p.id)}')">حذف</button></span></div>`).join("")||"لا توجد منتجات بعد. أضيفي أول منتج من النموذج.";
+const el=document.getElementById("manageList");
+el.innerHTML=products.map(p=>`
+<div class="manage-row"><span><b>${esc(p.name)}</b> — ${money(p.price)} ${p.is_active?"":"(مخفي)"}</span>
+<span><button class="secondary" onclick="editProduct('${String(p.id)}')">تعديل</button>
+<button class="danger" onclick="deleteProduct('${String(p.id)}')">حذف</button></span></div>`).join("")||"لا توجد منتجات بعد. أضيفي أول منتج من النموذج.";
 }
 function editProduct(id){
-  const p=products.find(x=>String(x.id)===String(id));if(!p)return;
-  document.getElementById("editId").value=p.id;document.getElementById("pName").value=p.name;
-  document.getElementById("pCode").value=p.code||"";document.getElementById("pPrice").value=p.price||"";
-  document.getElementById("pCat").value=p.cat;document.getElementById("pOptions").value=p.size||"";
-  document.getElementById("pDetail").value=p.detail||"";
-  document.getElementById("productForm").scrollIntoView({behavior:"smooth"});
+const p=products.find(x=>String(x.id)===String(id));if(!p)return;
+document.getElementById("editId").value=p.id;document.getElementById("pName").value=p.name;
+document.getElementById("pCode").value=p.code||"";document.getElementById("pPrice").value=p.price||"";
+document.getElementById("pCat").value=p.cat;document.getElementById("pOptions").value=p.size||"";
+document.getElementById("pDetail").value=p.detail||"";
+document.getElementById("productForm").scrollIntoView({behavior:"smooth"});
 }
 async function deleteProduct(id){
-  if(!confirm("هل تريدين حذف هذا المنتج نهائيًا؟"))return;
-  const {error}=await supabaseClient.from("products").delete().eq("id",id);
-  if(error){alert("تعذر حذف المنتج: "+error.message);return}
-  await loadManagerProducts();
+if(!confirm("هل تريدين حذف هذا المنتج نهائيًا؟"))return;
+const {error}=await supabaseClient.from("products").delete().eq("id",id);
+if(error){alert("تعذر حذف المنتج: "+error.message);return}
+await loadManagerProducts();
 }
 document.getElementById("productForm").addEventListener("submit",async e=>{
-  e.preventDefault();if(!currentManager){alert("سجلي الدخول بحساب المدير أولًا.");return}
-  const msg=document.getElementById("saveMessage");msg.textContent="جارٍ حفظ المنتج...";
-  const id=document.getElementById("editId").value,old=products.find(p=>String(p.id)===String(id)),file=document.getElementById("pImage").files[0];
-  let imagePath=old?.image||"";
-  try{
-    if(file){
-      if(!["image/jpeg","image/png","image/webp"].includes(file.type))throw new Error("صيغة الصورة يجب أن تكون JPG أو PNG أو WebP.");
-      if(file.size>5*1024*1024)throw new Error("حجم الصورة كبير. اختاري صورة أقل من 5 ميجابايت.");
-      const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"-");
-      const objectPath=Date.now()+"-"+Math.random().toString(36).slice(2)+"-"+safeName;
-      const {error:uploadError}=await supabaseClient.storage.from(STORAGE_BUCKET).upload(objectPath,file,{cacheControl:"3600",upsert:false,contentType:file.type});
-      if(uploadError)throw uploadError;
-      imagePath=supabaseClient.storage.from(STORAGE_BUCKET).getPublicUrl(objectPath).data.publicUrl;
-    }
-    if(!imagePath)throw new Error("اختاري صورة للمنتج أولًا.");
-    const row={
-      name:document.getElementById("pName").value.trim(),code:document.getElementById("pCode").value.trim(),
-      price:Number(document.getElementById("pPrice").value),category:document.getElementById("pCat").value,
-      sizes_colors:document.getElementById("pOptions").value.trim(),detail:document.getElementById("pDetail").value.trim(),
-      image_path:imagePath,is_active:true
-    };
-    if(id){const {error}=await supabaseClient.from("products").update(row).eq("id",id);if(error)throw error}
-    else{const {error}=await supabaseClient.from("products").insert(row);if(error)throw error}
-    resetForm();await loadManagerProducts();msg.textContent="تم حفظ المنتج في قاعدة البيانات، وأصبح ظاهرًا للعملاء.";
-  }catch(error){msg.textContent="لم يتم الحفظ: "+(error.message||"حدث خطأ غير معروف");console.error(error)}
+e.preventDefault();if(!currentManager){alert("سجلي الدخول بحساب المدير أولًا.");return}
+const msg=document.getElementById("saveMessage");msg.textContent="جارٍ حفظ المنتج...";
+const id=document.getElementById("editId").value,old=products.find(p=>String(p.id)===String(id)),file=document.getElementById("pImage").files[0];
+let imagePath=old?.image||"";
+try{
+if(file){
+if(!["image/jpeg","image/png","image/webp"].includes(file.type))throw new Error("صيغة الصورة يجب أن تكون JPG أو PNG أو WebP.");
+if(file.size>5*1024*1024)throw new Error("حجم الصورة كبير. اختاري صورة أقل من 5 ميجابايت.");
+const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"-");
+const objectPath=Date.now()+"-"+Math.random().toString(36).slice(2)+"-"+safeName;
+const {error:uploadError}=await supabaseClient.storage.from(STORAGE_BUCKET).upload(objectPath,file,{cacheControl:"3600",upsert:false,contentType:file.type});
+if(uploadError)throw uploadError;
+imagePath=supabaseClient.storage.from(STORAGE_BUCKET).getPublicUrl(objectPath).data.publicUrl;
+}
+if(!imagePath)throw new Error("اختاري صورة للمنتج أولًا.");
+const row={
+name:document.getElementById("pName").value.trim(),code:document.getElementById("pCode").value.trim(),
+price:Number(document.getElementById("pPrice").value),category:document.getElementById("pCat").value,
+sizes_colors:document.getElementById("pOptions").value.trim(),detail:document.getElementById("pDetail").value.trim(),
+image_path:imagePath,is_active:true
+};
+if(id){const {error}=await supabaseClient.from("products").update(row).eq("id",id);if(error)throw error}
+else{const {error}=await supabaseClient.from("products").insert(row);if(error)throw error}
+resetForm();await loadManagerProducts();msg.textContent="تم حفظ المنتج في قاعدة البيانات، وأصبح ظاهرًا للعملاء.";
+}catch(error){msg.textContent="لم يتم الحفظ: "+(error.message||"حدث خطأ غير معروف");console.error(error)}
 });
 supabaseClient.auth.onAuthStateChange((_event,session)=>{
-  if(session?.user?.id===MANAGER_UID){
-    if(!currentManager&&!document.getElementById("adminPanel").hidden)showManager();
-  }else if(currentManager)showLogin();
+if(session?.user?.id===MANAGER_UID){
+if(!currentManager&&!document.getElementById("adminPanel").hidden)showManager();
+}else if(currentManager)showLogin();
 });
 updateCartCount();
 loadProducts();
